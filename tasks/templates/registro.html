@@ -1,4 +1,4 @@
-
+{% extends 'base.html' %}
 
 {% load static%}
 {{error}}
@@ -29,13 +29,12 @@
                     <form action="{% url 'registro'%}" method="POST"> <!-- onsubmit="return validarRegistro();"-->
 
                         <h1 class="text-cente">Registro</h1>
-                        {% csrf_token %}
-                        
+                       {% csrf_token %}
                         <pre>Nombre             :   <input type="text" name="nombre"></pre>
                         <pre>Apellido Paterno   :   <input type="text" name="paterno"></pre>
                         <pre>Apellido Materno   :   <input type="text" name="materno"></pre>
                         <pre>Usuario            :   <input type="text" name="username"></pre>
-                        <pre>Email              :   <input type="mail" name="email"></pre>
+                        <pre>Email              :   <input type="email" name="email"></pre>
                         <pre>Fecha de nacimiento:   <input type="text" name="fechaNac"></pre>
                         <pre>Teléfono           :   <input type="text" name="telefono"></pre>
                         <pre>Dirección          :   <input type="text" name="direccion"></pre>
@@ -48,6 +47,7 @@
                             <button class="btn btn-primary">
                                 Registro
                             </button>
+                       
                         </div>
 
 

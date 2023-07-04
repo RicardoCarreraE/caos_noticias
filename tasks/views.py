@@ -146,10 +146,12 @@ def registro(request):
         if request.POST['password1'] == request.POST['password2']:
             try:
                 user = User.objects.create_user(username=request.POST['username'],
-                password=request.POST['password1'])          
-                nombre           = request.POST["username"]
+                password=request.POST['password1'])     
+                 
+                nombre           = request.POST["nombre"]
                 aPaterno         = request.POST["paterno"]
                 aMaterno         = request.POST["materno"]
+                usuario          = request.POST['username']    
                 email            = request.POST["email"]
                 fechaNac         = request.POST["fechaNac"]
                 telefono         = request.POST["telefono"]
@@ -163,6 +165,7 @@ def registro(request):
                                             nombre=nombre,
                                             apellido_paterno=aPaterno,
                                             apellido_materno=aMaterno,
+                                            usuario=usuario,
                                             email=email,
                                             fecha_nacimiento=fechaNac,
                                             telefono=telefono,
@@ -173,7 +176,6 @@ def registro(request):
                 #lo tira a la base de datos con .save()
                 objeto.save()
                 login(request, objeto)
-                #y vuelve a registro.html donde muestra el "error" de usuario creado
                 return render (request, 'iniSesion.html',{
                     'form': UserCreationForm,
                     "error": 'usuario creado'
