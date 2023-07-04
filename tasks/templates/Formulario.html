@@ -1,0 +1,109 @@
+{% load static%} 
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Formulario de contacto</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{% static 'css/formulario.css'%}">
+	<link rel="stylesheet" href="{% static 'css/estilosm.css' %}">
+	<script src="{% static 'js/validacion.js' %}"></script>
+
+</head>
+<header>
+
+</header>
+<div class="container__menu">
+
+	<div class="menu">
+		<input type="checkbox" id="check__menu">
+		<label id="#label__check" for="check__menu">
+			<i class="fa-solid fa-bars icon__menu"></i>
+		</label>
+		<nav>
+			<ul>
+				<li>
+					<div><img src="https://i.ibb.co/D1kCz8L/logoconfondo.png" class="right" alt="logoconfondo"
+							width="71px" height="71px"></div>
+				</li>
+				<li><a href="{% url 'index' %}" id="">Inicio</a></li>
+				<li><a href="#">Categorias</a>
+					<ul>
+						<li><a href="{% url 'POPULAR' %}">Popular</a></li>
+						<li><a href="{% url 'POLITICA' %}">Política</a></li>
+						<li><a href="{% url 'DEPORTE' %}">Deportes</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Autores</a>
+					<ul>
+						<li><a href="{% url 'POPULAR' %}">María Plaza</a></li>
+						<li><a href="{% url 'POLITICA' %}">Isabel Caro</a></li>
+						<li><a href="{% url 'POLITICA' %}">José Wilson</a></li>
+						<li><a href="{% url 'DEPORTE' %}">César Vásquez</a></li>
+					</ul>
+				<li><a href="{% url 'Formulario' %}">Contactanos</a></li>
+
+			</ul>
+		</nav>
+	</div>
+</div>
+
+<body>
+
+	
+	<form onsubmit="return validarFormulario();">
+	<div class="container">
+		<h1>¡Contactanos!</h1>
+		<form>
+			<div class="form-group">
+				<label for="nombre">Nombre:</label>
+				<input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+				<span style="display: none">* Por Favor Ingrese su Nombre</span>
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" class="form-control" id="email" placeholder="Ingresa tu email">
+				<span style="display: none">* Email incorrecto</span>
+			</div>
+			<div class="form-group">
+				<label for="mensaje">Mensaje:</label>
+				<textarea class="form-control" id="mensaje" rows="3"
+					placeholder="Escribe lo que necesitas y ya te responderemos"
+					onkeyup="validarFormulario();"></textarea>
+					<small>Caracteres restantes: <span id="caracteres-restantes">500</span></small>
+					<span style="display: none">* Ingrese un mensaje válido</span>
+			</div>
+			<button type="submit" class="btn btn-primary">Enviar</button>
+			<button type="reset" class="btn btn-primary">Limpiar campos</button>
+		</form>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("input[type='email']").blur(function(){
+					if($(this).val() === ""){
+						$(this).next("span").show();
+					} else {
+						$(this).next("span").hide();
+					}
+				});
+			});
+		</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+    $("#nombre").blur(function(){
+        if($(this).val() === ""){
+            $(this).next("span").show();
+        } else {
+            $(this).next("span").hide();
+        }
+    });
+});
+</script>
+	</div>	
+</body>
+</html>
+
