@@ -8,6 +8,7 @@ from .forms import TaskForm
 from .models import Task, NuevoUsuario, Noticia
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -219,3 +220,4 @@ def buscar(request):
             Q(palabra_clave__icontains=query)
         )
         return render(request, 'usuarios/resultados_busqueda.html', {'resultados': resultados, 'query': query})
+    

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Task(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    imagen = models.ImageField(upload_to='media/images/', null=True, blank=True)
+    imagen = models.ImageField(upload_to='noticias', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     datecompleted = models.DateTimeField(null=True, blank=True)
     important = models.BooleanField(default=False)
