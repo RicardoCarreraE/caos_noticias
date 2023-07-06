@@ -3,8 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from django.db.models import Q
 from .forms import TaskForm
-from .models import Task, NuevoUsuario
+from .models import Task, NuevoUsuario, Noticia
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -133,6 +134,8 @@ def Formulario(request):
     return render(request, 'Formulario.html')
 
 
+
+
 #Funcion de registro
 def registro(request):
     if request.method == 'GET':
@@ -192,3 +195,27 @@ def registro(request):
     
 def base2(request):
     return render(request, 'base2.html')
+
+def buscar(request):
+    query = request.GET.get('query')
+    query_lower = query.lower()
+
+    if query_lower == 'deporte':
+        return redirect('DEPORTE')
+    elif query_lower == 'politica':
+        return redirect('POLITICA')
+    elif query_lower == 'popular':
+        return redirect('POPULAR')
+    elif query_lower == 'maria' or query_lower == 'maria plaza':
+        return redirect('POPULAR')
+    elif query_lower == 'isabel' or query_lower == 'isabel caro':
+        return redirect('POLITICA')
+    elif query_lower == 'cesar' or query_lower == 'cesar vasquez':
+        return redirect('DEPORTE')
+    else:
+        resultados = Noticia.objects.filter(
+            Q(periodista__icontains=query) |
+            Q(categoria__icontains=query) |
+            Q(palabra_clave__icontains=query)
+        )
+        return render(request, 'usuarios/resultados_busqueda.html', {'resultados': resultados, 'query': query})

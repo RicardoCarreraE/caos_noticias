@@ -35,6 +35,6 @@ urlpatterns = [
     path('POPULAR/', views.POPULAR, name="POPULAR"),
     path('POLITICA/', views.POLITICA, name="POLITICA"),
     path('base2/', views.base2, name="base2"),
-   
+    path('resultados-busqueda/', views.buscar, name='resultados_busqueda'),
     
 ]

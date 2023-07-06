@@ -10,22 +10,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilosm.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/IniSesionP.css.css' %}">
 </head>
+
 <div class="container">
-
-
-
     <div class="container__menu">
         <div class="header__superior">
             <div class="logo">
                 <img src="{% static 'Img/logo.jpg' %}" alt="">
             </div>
-            <div class="menu">
-                <input type="checkbox" id="check__menu">
-                <label id="#label__check" for="check__menu">
-                    <i class="fa-solid fa-bars icon__menu"></i>
-                </label>
                 <nav>
-
                     <ul>
                         <li><a href="{% url 'index' %}" id="">Inicio</a></li>
                         <li><a href="#">Categorias</a>
@@ -35,9 +27,7 @@
                                 <li><a href="{% url 'DEPORTE' %}">Deportes</a></li>
                             </ul>
                         </li>
-
                         <li><a href="{% url 'Formulario' %}">Contactanos</a></li>
-
 
                         {% if user.is_authenticated %}
                         <li>
@@ -53,13 +43,21 @@
                             <a href="{% url 'logout' %}">Salir</a>
                         </li>
                         {% else %}
-
                         <li>
-                            <a href="{% url 'iniSesion' %}"> Periodistas </a>
+                            <a href="{% url 'iniSesion' %}">Ingreso Periodistas </a>
                         </li>
+                        <li class="mx-auto">
+                            <a href="{% url 'registro' %}">¿Eres periodista? Registrate</a>
+                        </li>
+                        <div class="search-container mx-auto">
+                            <div class="search">
+                                <form action="{% url 'resultados_busqueda' %}" method="GET">
+                                    <input type="text" name="query" placeholder="Buscar...">
+                                    <button class="btn btn-primary" type="submit">Buscar</button>
+                                </form>
 
-                        <div class="search mx-auto">
-                            <input type="search" placeholder="¿Que deseas buscar?">
+                            </div>
+
                         </div>
                         {% endif %}
                     </ul>
