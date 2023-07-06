@@ -189,3 +189,6 @@ def registro(request):
                     'form': UserCreationForm,
                     "error": 'Las contraseñas no coinciden'
                 })
+    
+def base2(request):
+    return render(request, 'base2.html')

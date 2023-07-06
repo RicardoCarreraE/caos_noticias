@@ -1,25 +1,45 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-
+{% extends 'base.html' %}
 {% block content %}
-<!--<h1>IniSesion</h1>
 
-{{error}}
+<main class="container">
+    <div class="row" >
+        <section class="col-md-4 off-set-4 mt-5">
+            <form action="/iniSesion/" method="POST" class="card card-body">
+                   
+                    {{error}}
 
-<form action="/iniSesion/" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button>
-        Iniciar Sesion
-    </button>
-  
+                <h1 class="text-center">Inicio Sesion</h1>
+                {{error}}
+                {% csrf_token %}
 
-</form>-->
+                <div class="mb-3">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control"
+                        placeholder="Ingrese su Usuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control"
+                        placeholder="Ingrese su password">
+                </div>
+                    <button class="btn btn-primary">
+                        Iniciar Sesion
+                    </button>
+                    <p>¿Aun no tiene cuenta? <a href="{% url 'registro' %}">Registrarse</a></p>
+            </form>
+        </section>
+    </div>
+</main>
 
 {% endblock %}
 
 {% load static %}
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -79,4 +99,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
     integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
     crossorigin="anonymous"></script>
-</html>
+</html>-->
